@@ -7,6 +7,13 @@
             "bazzlycodes\\payoffice\\": "src/"
         }
     },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "bazzlycodes\\payoffice\\Providers\\PaymentServicesProviders"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "ALLI BAZEET",
