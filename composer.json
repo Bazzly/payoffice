@@ -15,5 +15,10 @@
     ],
     "require-dev": {
         "orchestra/testbench": "^7.15"
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "Bazzlycodes\\Payoffice\\Tests\\": "tests/"
+        }
     }
 }
