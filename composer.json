@@ -1,0 +1,19 @@
+{
+    "name": "bazzlycodes/payoffice",
+    "description": "All payment system in one",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bazzlycodes\\Payoffice\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ALLI BAZEET",
+            "email": "bazeet4love@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^7.15"
+    }
+}
