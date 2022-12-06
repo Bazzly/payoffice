@@ -1,10 +1,10 @@
 {
-    "name": "bazzlycodes/Payoffice",
+    "name": "bazzlycodes/payoffice",
     "description": "All payment system in one",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "bazzlycodes\\Payoffice\\": "src/"
+            "bazzlycodes\\payoffice\\": "src/"
         }
     },
     "authors": [
@@ -18,7 +18,7 @@
     },
     "autoload-dev":{
         "psr-4":{
-            "bazzlycodes\\Payoffice\\Tests\\": "tests/"
+            "bazzlycodes\\payoffice\\Tests\\": "tests/"
         }
     }
 }
