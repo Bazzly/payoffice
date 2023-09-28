@@ -1,16 +1,16 @@
 {
-    "name": "bazzlycodes/payoffice",
+    "name": "bazzly/payoffice",
     "description": "All payment system in one",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "bazzlycodes\\payoffice\\": "src/"
+            "bazzly\\payoffice\\": "src/"
         }
     },
     "extra":{
         "laravel":{
             "providers":[
-                "bazzlycodes\\payoffice\\Providers\\PaymentServicesProviders"
+                "bazzly\\payoffice\\Providers\\PaymentServicesProviders"
             ]
         }
     },
@@ -25,7 +25,7 @@
     },
     "autoload-dev":{
         "psr-4":{
-            "bazzlycodes\\payoffice\\Tests\\": "tests/"
+            "bazzly\\payoffice\\Tests\\": "tests/"
         }
     }
 }
