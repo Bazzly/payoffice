@@ -1,6 +1,6 @@
 <?php
 
-namespace bazzlycodes\payoffice;
+namespace bazzly\payoffice;
 
 use COM;
 use Illuminate\Support\Facades\Config;

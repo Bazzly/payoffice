@@ -1,10 +1,10 @@
 <?php
 
-namespace bazzlycodes\payoffice\tests;
+namespace bazzly\payoffice\tests;
 
 use Orchestra\Testbench\TestCase;
-use bazzlycodes\payoffice\Paystack;
-use bazzlycodes\payoffice\CheckServer;
+use bazzly\payoffice\Paystack;
+use bazzly\payoffice\CheckServer;
 
 class PaymentTest extends TestCase
 {
