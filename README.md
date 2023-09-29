@@ -1,23 +1,24 @@
 # Payoffice
-All payment system in one
+## All payment system in one
 
-#Building laravel TDD
-https://jsdecena.medium.com/simple-tdd-in-laravel-with-11-steps-c475f8b1b214
+# This package is to solve just one problem 
+## Api url can be down this means payment on website will not go through
+## this package will allow user or admin to ping and see 
+## the status of every fintech API url before accepting them 
+## to be the use as the prefered payment option.
 
 
-#package help
-https://pineco.de/laravel-package-development-basics/
 
-# Preparing the Package Development
-## package structure
-| resources/
-| tests/
-| config/
-| database/
-| src/
-| .gitignore
-| CHANGELOG.md
-| README.md
-| phpunit.xml
-| composer.json
-| LICENSE
+## Default preset ping is 10ms user can decide to increase it when they are experiencing large payment
+## companyName,
+## APIUrl 
+## prefered ping
+
+## $data = new PingServer(string $name, string $url, int $preferSeverPing = null);
+# Output result data
+``'companyName'``
+``'APIUrl'``
+``'serverStatus'``
+``'serverPing'``
+``'userPing'``
+    

@@ -10,7 +10,7 @@
     "extra":{
         "laravel":{
             "providers":[
-                "bazzly\\payoffice\\Providers\\PaymentServicesProviders"
+                "bazzly\\payoffice\\PaymentServiceProvider"
             ]
         }
     },
