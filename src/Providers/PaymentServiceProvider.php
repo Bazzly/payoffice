@@ -2,13 +2,14 @@
 
 namespace bazzly\payoffice\Providers;
 
+use payoffice;
 use Illuminate\Support\ServiceProvider;
 
 class PaymentServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $config = realpath(__DIR__.'/../resources/config/payoffice.php');
+        $config = realpath(__DIR__.'resources/config/payoffice.php');
 
         $this->publishes([
             $config => config_path('payoffice.php')
