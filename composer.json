@@ -1,6 +1,6 @@
 {
     "name": "bazzly/payoffice",
-    "description": "All payment system in one",
+    "description": "Laravel all fintech payment API server ping system in one",
     "license": "MIT",
     "autoload": {
         "psr-4": {
