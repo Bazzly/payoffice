@@ -7,3 +7,18 @@
 ## the status of every fintech API url before accepting them 
 ## to be the use as the prefered payment option.
 
+
+
+## Default preset ping is 10ms user can decide to increase it when they are experiencing large payment
+## companyName,
+## APIUrl 
+## prefered ping
+
+## $data = new PingServer(string $name, string $url, int $preferSeverPing = null);
+# Output result data
+``'companyName'``
+``'APIUrl'``
+``'serverStatus'``
+``'serverPing'``
+``'userPing'``
+    

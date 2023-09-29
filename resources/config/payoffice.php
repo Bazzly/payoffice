@@ -25,7 +25,7 @@ return [
      */
 
     'interswitch' =>[
-        'APIURL' => "apps.qa.interswitchng.com/passport/oauth/token"
+        'APIURL' => "apps.qa.interswitchng.com"
     ],
 
     /**

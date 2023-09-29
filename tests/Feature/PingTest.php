@@ -16,17 +16,19 @@ class PaymentTest extends TestCase
     {
         // Default data companyName,apiURL and prefered ping
         // default preset ping is 10ms user can decide to increase it when they are experiencing large payment
-        $data = new PingServer('paystack','api.paystack.co');
-        $companyName = $data->getUrlServerDetails()['companyName'];
-        $serverUpStatus = $data->getUrlServerDetails()['serverStatus'];
-        $pingStatus = $data->getUrlServerDetails()['serverPing'];
-        $preferePing = $data->getUrlServerDetails()['userPing'];
-        $userPrefencePing =  $preferePing == null ? 10 : $preferePing;
-        // dd($data->getUrlServerDetails(), $userPrefencePing);
-        if($serverUpStatus == 'up' && $pingStatus >= $userPrefencePing ){
-            assertTrue($serverUpStatus == 'up' && $pingStatus >= 10);
+        $data = new PingServer('paystack','api.paystack.co',180);
+        $server = $data->getUrlServerDetails();
+        // dd($server);
+        $companyName = $server['companyName'];
+        $APIURL =$server['APIUrl'];
+        $serverUpStatus = $server['serverStatus'];
+        $pingStatus = $server['serverPing'];
+        $preferePing = $server['userPing'];
+        assertTrue($serverUpStatus == 'up' && $pingStatus >= $preferePing);
+        if($serverUpStatus == 'up' && $pingStatus >= $preferePing){
+            dd($companyName,$APIURL,$serverUpStatus,$pingStatus);
         }else{
-            // default payment option will be use
+           dd('server is down or did not meet your prefered ping status');
         }
      
 

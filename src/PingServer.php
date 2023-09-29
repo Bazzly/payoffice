@@ -73,12 +73,12 @@ class PingServer
         
         $data = [
                 'companyName'=>$this->name,
-                'companyUrl'=>$ping['HOSTNAME'],
+                'APIUrl'=>$ping['HOSTNAME'],
                 'serverStatus'=>$ping['SERVERSTATUS'],
                 'serverPing' =>$ping['SERVERPING'],
-                'userPing' =>$this->preferSeverPing,   
+                'userPing' =>  $this->preferSeverPing == null ? 10 : $this->preferSeverPing,   
         ];
-        
+
         return   $data;
     }
 
