@@ -6,17 +6,17 @@ return [
      * Paystack requires the following information for every
      * payment processing
      */
-
-    'paystack' => [
-        'APIURL' => "api.paystack.co"
+    [
+        'name' => "paystack",
+        'APIURL' =>  "api.paystack.co",
     ],
-
     /**
      * Flutterwave requires the following information for every
      * payment processing
      */
 
-    'flutterwave' =>[
+    [
+        'name' => "flutterwave",
         'APIURL' => "api.flutterwave.com"
     ],
     /**
@@ -24,7 +24,8 @@ return [
      * payment processing
      */
 
-    'interswitch' =>[
+    [
+        'name' => "interswitch",
         'APIURL' => "apps.qa.interswitchng.com"
     ],
 
@@ -33,7 +34,8 @@ return [
      * payment processing
      */
 
-    'remita'=> [
+    [
+        'name' => "remita",
         'APIURL' => "remitademo.net"
     ],
 
