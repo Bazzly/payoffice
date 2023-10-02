@@ -2,7 +2,9 @@
 
 namespace bazzly\payoffice;
 
+use Throwable;
 use GuzzleHttp\Client;
+use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
 
 class PingServer
@@ -41,18 +43,18 @@ class PingServer
 
     protected function ping($host, $port, $timeout)
     {
-        $tB = microtime(true);
-        $fP = fSockOpen($host, $port, $errno, $errstr, $timeout);
 
-        if (!$fP) {
-            $data = [
-                "SERVESTATUS" => self::DOWNSTATUS,
-                "HOSTNAME" => $host,
-                "SERVERPING" => 0 
-            ];
-            return $data;
-        }
-        $tA = microtime(true);
+        set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+            if (!(error_reporting() & $errno)) {
+                return false;
+            }
+            throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+        });
+        try {
+            $tB = microtime(true);
+            $fP = fSockOpen($host, $port, $errno, $errstr, $timeout);
+        if ($fP) {
+            $tA = microtime(true);
         $severStatus = round((($tA - $tB) * 1000), 0) ;
         $data = [
             "SERVERSTATUS" => self::UPSTATUS,
@@ -60,6 +62,22 @@ class PingServer
             "SERVERPING" => $severStatus
         ];
         return $data;
+           
+        }
+   
+    }
+    catch (Throwable $e) {
+        $data = [
+            "SERVERSTATUS" => self::DOWNSTATUS,
+            "HOSTNAME" => $host,
+            "SERVERPING" => 0 
+        ];
+        return $data;
+        fclose($fP);
+
+    }
+
+      
     }
 
     /**
@@ -70,14 +88,20 @@ class PingServer
     {
 
         $ping = $this->ping($this->paymentApiUrl, $this->port, $this->timeout);
-        
-        $data = [
-                'companyName'=>$this->name,
+        try {
+            $data = [
+                'name'=>$this->name,
                 'APIUrl'=>$ping['HOSTNAME'],
                 'serverStatus'=>$ping['SERVERSTATUS'],
                 'serverPing' =>$ping['SERVERPING'],
                 'userPing' =>  $this->preferSeverPing == null ? 10 : $this->preferSeverPing,   
         ];
+    
+        }
+        catch (Throwable $e) {
+            $data =  $e->getMessage() . PHP_EOL;
+        }
+
 
         return   $data;
     }
