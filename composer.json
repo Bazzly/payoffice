@@ -1,6 +1,22 @@
 {
     "name": "bazzly/payoffice",
     "description": "Laravel all fintech payment API server ping system in one",
+    "keywords": [
+        "payoffice",
+        "bazzlycodes",
+        "laravel",
+        "framework",
+        "monitoring",
+        "tracking",
+        "analysis",
+        "laravel payment monitoring package",
+        "laravel payment providers monitoring",
+        "laravel package",
+        "laravel-monitoring",
+        "laravel-pings",
+        "laravel tracking"
+    ],
+    "homepage": "https://github.com/bazzly/payoffice",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -17,15 +33,26 @@
     "authors": [
         {
             "name": "ALLI BAZEET",
-            "email": "bazeet4love@gmail.com"
+            "email": "bazeet4love@gmail.com",
+            "role": "author",
+            "homepage": "https://github.com/bazzly"
+        },
+        {
+            "name": "bazzlycodes",
+            "role": "owner",
+            "homepage": "https://github.com/bazzly"
         }
     ],
     "require-dev": {
         "orchestra/testbench": "^7.15"
+        
     },
     "autoload-dev":{
         "psr-4":{
             "bazzly\\payoffice\\Tests\\": "tests/"
         }
+    },
+    "require": {
+        "peppeocchi/php-cron-scheduler": "^4.0"
     }
 }

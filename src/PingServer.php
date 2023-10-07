@@ -2,10 +2,14 @@
 
 namespace bazzly\payoffice;
 
+
 use Throwable;
 use GuzzleHttp\Client;
 use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
+use GO\Scheduler;
+use Illuminate\Database\Eloquent\Model;
+use bazzly\payoffice\Models\PingsMonitoring;
 
 class PingServer
 {
@@ -91,7 +95,7 @@ class PingServer
         try {
             $data = [
                 'name'=>$this->name,
-                'APIUrl'=>$ping['HOSTNAME'],
+                'apiurl'=>$ping['HOSTNAME'],
                 'serverStatus'=>$ping['SERVERSTATUS'],
                 'serverPing' =>$ping['SERVERPING'],
                 'userPing' =>  $this->preferSeverPing == null ? 10 : $this->preferSeverPing,   
@@ -101,10 +105,27 @@ class PingServer
         catch (Throwable $e) {
             $data =  $e->getMessage() . PHP_EOL;
         }
-
-
+        PingsMonitoring::query()->create($data);
         return   $data;
     }
 
+
+    // public function storePingData($name){
+    //     $data = $this->getUrlServerDetails();
+    //     return PingsMonitoring::query()->create($data);
+    // }
+
+    // protected function setScheduler($runTask = null)
+    // {
+    //     // Create a new scheduler
+    //     $scheduler = new Scheduler();
+    //     // Schedule jobs
+    //     $scheduler->call([
+    //         PingsMonitoring::query()->create($this->getUrlServerDetails()),
+    //     ])->hourly();
+    //     // $scheduler->call($this->storePingData())->$runTask == null ? 'hourly()' : $runTask;
+    //     // Run the scheduler
+    //     $scheduler->run();
+    // }
 
 }

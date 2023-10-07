@@ -6,11 +6,9 @@ namespace bazzly\payoffice\tests;
 use Throwable;
 use bazzly\payoffice\PingServer;
 use Orchestra\Testbench\TestCase;
-
 use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
 use function PHPUnit\Framework\assertTrue;
-
 class PingTest extends TestCase
 {
 
@@ -19,8 +17,24 @@ class PingTest extends TestCase
 
         $data = new PingServer('paystack','api.paystack.co',100);
         $server = $data->getUrlServerDetails();
-      
 
+        // $paymentProvider = $payment->usePaymentProvider('paystack');
+        // $fintechCompanies = config('payoffice');
+    
+        // $serverDetails =[];
+        // foreach($fintechCompanies as $key => $fintechCompany){
+        //     $name = $fintechCompanies[intval($key)]['name'];
+        //     $url = $fintechCompanies[intval($key)]['APIURL'];
+        //     $data = new PingServer($name,$url,$userPing);
+        //     $server = $data->getUrlServerDetails();
+        //     $companyName = $server['name'];
+        //     $APIURL =$server['APIUrl'];
+        //     $serverUpStatus = $server['serverStatus'];
+        //     $pingStatus = $server['serverPing'];
+        //     $preferePing = $server['userPing'];
+        //     $serverDetails[] = [$companyName,$APIURL,$serverUpStatus,$pingStatus,$preferePing];
+        // }
+        // dd($serverDetails);
         // $fintechCompanies = config::get('payoffice');
         // dd($fintechCompanies);
         
