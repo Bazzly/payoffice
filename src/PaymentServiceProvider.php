@@ -13,7 +13,6 @@ class PaymentServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/payoffice.php' =>  config_path('payoffice.php'),
          ], 'config');
-
     }
 
         /**

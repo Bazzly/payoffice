@@ -28,7 +28,8 @@ class PingsMonitoring extends Model
         'apiurl',
         'serverStatus',
         'serverPing',
-        'userPing'
+        'userPing',
+        'is_default'
     ];
 
 

@@ -105,7 +105,7 @@ class PingServer
         catch (Throwable $e) {
             $data =  $e->getMessage() . PHP_EOL;
         }
-        PingsMonitoring::query()->create($data);
+   
         return   $data;
     }
 

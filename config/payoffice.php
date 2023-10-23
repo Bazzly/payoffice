@@ -33,6 +33,12 @@ return [
      *
      */
     'merchantEmail' => getenv('PAYSTACK_MERCHANT_EMAIL'),
+       
+    /**
+     * Optional email address of the merchant
+     *
+     */
+    'currency' => getenv('PAYSTACK_MERCHANT_CURRENCY'),
         ]
     ],
     /**

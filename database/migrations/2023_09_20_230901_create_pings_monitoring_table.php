@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('apiurl');
             $table->string('serverStatus');
             $table->string('serverPing');
-            $table->text('userPing');
+            $table->string('userPing');
+            $table->boolean('is_default')->nullable()->default(0);
             $table->timestamps();
   
         });
