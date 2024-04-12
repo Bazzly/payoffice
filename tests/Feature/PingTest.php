@@ -18,7 +18,7 @@ class PingTest extends TestCase
     public function checkPaymentApiUrl(){
         $data = new Transfer();
         $data->retriveBankDetails('Guaranty Trust Bank Plc');
-        dd($data->retriveBankDetails());
+        return $data->retriveBankDetails();
         // $data = new PingServer('paystack','api.paystack.co',100);
         // $server = $data->getUrlServerDetails();
 

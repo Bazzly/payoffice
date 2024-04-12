@@ -5,7 +5,7 @@ namespace bazzly\payoffice;
 
 use Illuminate\Support\ServiceProvider;
 
-class paymentServiceProvider extends ServiceProvider
+class PaymentServiceProvider extends ServiceProvider
 {
     public function boot()
     {
