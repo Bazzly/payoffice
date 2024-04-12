@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Config;
 use bazzly\payoffice\Paystack\Exceptions\IsNullException;
 use bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 
-class Paystack
+class GetPaid
 {
     /**
      * Transaction Verification Successful
