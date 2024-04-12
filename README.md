@@ -21,4 +21,6 @@
 ``'serverStatus'``
 ``'serverPing'``
 ``'userPing'``
-    
+## Credit to all this people and there previous work that make payment office easier to build using there already well written payment api.
+
+## unicodeveloper ['https://github.com/unicodeveloper/laravel-paystack']
