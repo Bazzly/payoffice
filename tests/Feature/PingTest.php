@@ -10,15 +10,17 @@ use Orchestra\Testbench\TestCase;
 use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
 use function PHPUnit\Framework\assertTrue;
-// use bazzly\payoffice\Paystack\Transfer;
+use bazzly\payoffice\Paystack\Transfer;
 class PingTest extends TestCase
 {
 
     /** @test */
     public function checkPaymentApiUrl(){
-
-        $data = new PingServer('paystack','api.paystack.co',100);
-        $server = $data->getUrlServerDetails();
+        $data = new Transfer();
+        $data->retriveBankDetails('Guaranty Trust Bank Plc');
+        dd($data->retriveBankDetails());
+        // $data = new PingServer('paystack','api.paystack.co',100);
+        // $server = $data->getUrlServerDetails();
 
         // how to use on your project
         //     $fintechCompanies =  Config('payoffice');
@@ -88,8 +90,17 @@ class PingTest extends TestCase
 
 
     /** @test */
-    public function testGetbalance(){
-        $data = new Paystack();
-        $data->getBalance();
-    }
+    // public function testGetbalance(){
+    //     $data = new Paystack();
+    //     $data->getBalance();
+    // }
+
+        /** @test */
+        // public function testGetbanks(){
+        //     $data = new Transfer();
+        //     $data->retriveBankDetails();
+        //     dd($data->retriveBankDetails());
+        // }
+
+
 }

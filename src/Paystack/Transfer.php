@@ -145,6 +145,15 @@ class Transfer
         );
     }
 
+        /**
+     * Get the whole response from a get operation
+     * @return array
+     */
+    private function getResponse()
+    {
+        return json_decode($this->response->getBody(), true);
+    }
+
     /**
      * Get the data response from a get operation
      * @return array
@@ -164,6 +173,7 @@ class Transfer
     //==============Banks=======================
 
     public function retriveBankDetails(string $bankName){
+        dd($bankName);
         $this->url = '/bank';
         unset($this->banks);
         $this->banks = $this->setHttpResponse($this->url, 'GET', [])->getData();
