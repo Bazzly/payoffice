@@ -12,12 +12,12 @@
 namespace bazzly\payoffice\Paystack;
 
 use \GuzzleHttp\Client;
-use bazzly\payoffice\TransRef;
+use Bazzly\payoffice\TransRef;
 // use bazzly\payoffice\Paystack\Exceptions\IsNullException;
 // use bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 use Illuminate\Support\Facades\Config;
-use bazzly\payoffice\Paystack\Exceptions\IsNullException;
-use bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
+use Bazzly\payoffice\Paystack\Exceptions\IsNullException;
+use Bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 
 class Transfer
 {
@@ -79,7 +79,7 @@ class Transfer
      * @var string
      */
     protected $country;
-    protected $accName, $accNumber , $bankName;
+    protected $accName, $accNumber , $bankName,$bankCode;
 
     /**
      * Country bank to retrive
@@ -172,20 +172,20 @@ class Transfer
 
     //==============Banks=======================
 
-    public function retriveBankDetails(string $bankName){
-        dd($bankName);
-        $this->url = '/bank';
-        unset($this->banks);
-        $this->banks = $this->setHttpResponse($this->url, 'GET', [])->getData();
+    // public function retriveBankDetails(string $bankName){
+    //     dd($bankName); 
+    //     $this->url = '/bank';
+    //     unset($this->banks);
+    //     $this->banks = $this->setHttpResponse($this->url, 'GET', [])->getData();
 
-        foreach ($this->banks  as $key => $data) {
-            if($data['name'] == $bankName) {
-                $bank = $this->banks[$key];
-            }
-        }
+    //     foreach ($this->banks  as $key => $data) {
+    //         if($data['name'] == $bankName) {
+    //             $bank = $this->banks[$key];
+    //         }
+    //     }
        
-       return $bank;
-    }
+    //    return $bank;
+    // }
 
 
 
@@ -194,16 +194,17 @@ class Transfer
             "type"=>"nuban", 
             "name"=>$this->accName, 
             "account_number"=>$this->accNumber, 
-            "bank_code"=>$this->retriveBankDetails($this->bankName)['code'], 
+            "bank_code"=>$this->bankCode, 
             "currency"=>$this->setCurrency()
         ];
         $this->url ='/transferrecipient';
-       $this->response = $this->setHttpResponse($this->url, 'POST', $data)->getResponse();
+        $this->response = $this->setHttpResponse($this->url, 'POST', $data)->getResponse();
        
-       $result = $this->response['message'];
-
+        $result = $this->response['message'];
+    
        switch ($result) {
            case self::RECIPIENT:
+            // dd($result, $this->response['recipient_code'] );
                $validate = true;
                break;
            default:
@@ -221,7 +222,6 @@ class Transfer
 
     $this->response = $this->setHttpResponse($transferUrl, $method, $data)->getResponse();
     $result = $this->response['message'];
-
        switch ($result) {
            case self::STATUS_OTP:
                $validate = 1;
@@ -256,25 +256,31 @@ class Transfer
 
 
     public function sendMonyToAccDetails(string $accName, string $accNumber, 
-    string $bankName){
+    string $bankName,$metadata){
+      
         // set user info to transfer money to
         $this->accName = $accName ; 
         $this->accNumber = $accNumber;
         $this->bankName = $bankName;
+        $this->bankCode = $metadata['bankCode'];
         $transferUrl = '/transfer';
+        // dd($metadata['source']);
         // check if beneficiary (recipient) is created
+    
         if($this->createRecipient()){
             $referencecode = $this->response['data']['recipient_code'];
+       
             $data=[
-                "source"=>"balance", 
-                "reference"=>request()->reference, 
-                "reason"=>request()->reason,
-                "amount"=>request()->amount * 100, 
-                "recipient"=>$referencecode
+                "source"=>$metadata['source'], 
+                "amount"=>$metadata['amount'], 
+                "reference"=>$metadata['reference'], 
+                "recipient"=>$referencecode,
+                "reason"=>$metadata['reason'],
             ];
-            // dd('here',$referencecode,$transferUrl,$data);
+        
+   
             $message = $this->checkTransferRequirement($transferUrl , 'POST', $data);
-
+         
             if($message === 1){
                             // redirect to page that set otp data
             $this->redirectTogetOtp($referencecode);
@@ -336,6 +342,33 @@ public function getBalance(string $ledger = null){
         );
 
         return $this;
+    }
+
+        /**
+     * Get a list of all supported banks and their properties
+     * @param $country - The country from which to obtain the list of supported banks, $per_page - Specifies how many records to retrieve per page , 
+     * $use_cursor - Flag to enable cursor pagination on the endpoint
+     * @return array
+     */
+    public function getBanks(?string $country = null, int $per_page = 50, bool $use_cursor = false)
+    {
+        if (!$country)
+            $country = request()->country ?? 'nigeria';
+
+        $this->setRequestOptions();
+        return $this->setHttpResponse("/bank/?country=" . $country . "&use_cursor=" . $use_cursor . "&perPage=" . (int) $per_page, "GET")->getResponse();
+    }
+
+    /**
+     * Confirm an account belongs to the right customer
+     * @param $account_number - Account Number, $bank_code - You can get the list of bank codes by calling the List Banks endpoint
+     * @return array
+     */
+    public function confirmAccount(string $account_number, string $bank_code)
+    {
+
+        $this->setRequestOptions();
+        return $this->setHttpResponse("/bank/resolve/?account_number=" . $account_number . "&bank_code=" . $bank_code, "GET")->getResponse();
     }
 
 }
