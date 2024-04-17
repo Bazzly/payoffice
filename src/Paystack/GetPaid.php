@@ -12,12 +12,12 @@
 namespace bazzly\payoffice\Paystack;
 
 use \GuzzleHttp\Client;
-use bazzly\payoffice\TransRef;
+use Bazzly\payoffice\TransRef;
 // use bazzly\payoffice\Paystack\Exceptions\IsNullException;
 // use bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 use Illuminate\Support\Facades\Config;
-use bazzly\payoffice\Paystack\Exceptions\IsNullException;
-use bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
+use Bazzly\payoffice\Paystack\Exceptions\IsNullException;
+use Bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 
 class GetPaid
 {

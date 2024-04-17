@@ -5,7 +5,7 @@ namespace bazzly\payoffice\tests;
 include_once realpath('.' . DIRECTORY_SEPARATOR . 'tests' . DIRECTORY_SEPARATOR . '/../config/payoffice.php');
 use Throwable;
 use bazzly\payoffice\PingServer;
-use bazzly\payoffice\Paystack\Paystack;
+use bazzly\payoffice\Paystack\GetPaid;
 use Orchestra\Testbench\TestCase;
 use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
@@ -17,8 +17,8 @@ class PingTest extends TestCase
     /** @test */
     public function checkPaymentApiUrl(){
         $data = new Transfer();
-        $data->retriveBankDetails('Guaranty Trust Bank Plc');
-        return $data->retriveBankDetails();
+        // $data->retriveBankDetails('Guaranty Trust Bank Plc');
+        return  $data->retriveBankDetails('Guaranty Trust Bank Plc');
         // $data = new PingServer('paystack','api.paystack.co',100);
         // $server = $data->getUrlServerDetails();
 
