@@ -1,6 +1,7 @@
 {
     "name": "bazzly/payoffice",
-    "description": "Laravel all fintech payment API server ping system in one",
+    "type": "package",
+    "description": "Laravel package to use all fintech payment API and fetch server for pings",
     "keywords": [
         "payoffice",
         "bazzlycodes",
@@ -20,13 +21,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Bazzly\\payoffice\\": "src/"
+            "Bazzly\\Payoffice\\": "src/"
         }
     },
     "extra":{
         "laravel":{
             "providers":[
-                "Bazzly\\payoffice\\paymentServiceProvider"
+                "Bazzly\\Payoffice\\PaymentServiceProvider"
             ]
         }
     },
