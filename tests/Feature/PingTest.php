@@ -1,16 +1,16 @@
 <?php
 
-namespace bazzly\payoffice\tests;
+namespace Bazzly\Payoffice\tests;
 
 include_once realpath('.' . DIRECTORY_SEPARATOR . 'tests' . DIRECTORY_SEPARATOR . '/../config/payoffice.php');
 use Throwable;
-use bazzly\payoffice\PingServer;
-use bazzly\payoffice\Paystack\GetPaid;
+use Bazzly\Payoffice\PingServer;
+use Bazzly\Payoffice\Paystack\GetPaid;
 use Orchestra\Testbench\TestCase;
 use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
 use function PHPUnit\Framework\assertTrue;
-use bazzly\payoffice\Paystack\Transfer;
+use Bazzly\Payoffice\Paystack\Transfer;
 class PingTest extends TestCase
 {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace bazzly\payoffice\Models;
+namespace Bazzly\Payoffice\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
