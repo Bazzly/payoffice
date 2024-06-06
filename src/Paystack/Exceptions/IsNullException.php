@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace bazzly\payoffice\Paystack\Exceptions;
+namespace Bazzly\Payoffice\Paystack\Exceptions;
 
 use Exception;
 

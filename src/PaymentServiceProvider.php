@@ -1,6 +1,6 @@
 <?php
 
-namespace bazzly\payoffice;
+namespace Bazzly\Payoffice;
 
 
 use Illuminate\Support\ServiceProvider;

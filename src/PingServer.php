@@ -1,6 +1,6 @@
 <?php
 
-namespace bazzly\payoffice;
+namespace Bazzly\Payoffice;
 
 
 use Throwable;
@@ -9,7 +9,7 @@ use Psy\Exception\ErrorException;
 use Illuminate\Support\Facades\Config;
 use GO\Scheduler;
 use Illuminate\Database\Eloquent\Model;
-use bazzly\payoffice\Models\PingsMonitoring;
+use Bazzly\Payoffice\Models\PingsMonitoring;
 
 class PingServer
 {

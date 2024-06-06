@@ -54,7 +54,7 @@
     },
     "autoload-dev":{
         "psr-4":{
-            "Bazzly\\payoffice\\Tests\\": "tests/"
+            "Bazzly\\Payoffice\\Tests\\": "tests/"
         }
     },
     "require": {

@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace bazzly\payoffice\Paystack;
+namespace Bazzly\Payoffice\Paystack;
 
 use \GuzzleHttp\Client;
-use Bazzly\payoffice\TransRef;
-// use bazzly\payoffice\Paystack\Exceptions\IsNullException;
-// use bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
+use Bazzly\Payoffice\TransRef;
+// use Bazzly\Payoffice\Paystack\Exceptions\IsNullException;
+// use Bazzly\Payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 use Illuminate\Support\Facades\Config;
-use Bazzly\payoffice\Paystack\Exceptions\IsNullException;
-use Bazzly\payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
+use Bazzly\Payoffice\Paystack\Exceptions\IsNullException;
+use Bazzly\Payoffice\Paystack\Exceptions\PaymentVerificationFailedException;
 
 class GetPaid
 {
